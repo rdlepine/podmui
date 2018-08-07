@@ -1,15 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import Login from './components/Login'
+import Login from './components/security/Login'
 import { withStyles } from '@material-ui/core/styles'
 import Main from './components/Main'
-import {AppBar, Toolbar} from '@material-ui/core'
+import {AppBar, Toolbar, IconButton} from '@material-ui/core'
+import MenuIcon from '@material-ui/icons/Menu'
+import Logo from './images/pod_logo.png'
+import './App.css'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faEnvelope, faKey, faTruck, faWrench, faListOl, faFile } from '@fortawesome/free-solid-svg-icons'
 
-import './App.css';
+library.add(faEnvelope, faTruck, faWrench, faKey, faListOl, faFile)
 
 const styles = {
-  loginToolbar: {
-    background: "linear-gradient(60deg, #667eea, #764ba2)",
+  mainToolBar: {
+    background: "linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)",
+  },
+  logo: {
+    width: 220,
+    height: 60,
+    
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+    color: "black",
   },
 }
 
@@ -30,13 +44,19 @@ class App extends Component {
 
   render() {
 
-    const classes = this.props;
+    const {classes} = this.props;
+    const {isLoggedIn} = this.state;
 
     return (
         <div className="App">
-          <AppBar className={classes.loginToolbar} position="static">
+          <AppBar position="static" className={classes.mainToolBar}>
             <Toolbar>
-          
+            {isLoggedIn && (
+            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+              <MenuIcon />
+            </IconButton>
+            )}
+             <img className={classes.logo} src={Logo} alt="PODVerify" />
             </Toolbar>
             </AppBar>
 

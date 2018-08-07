@@ -1,12 +1,8 @@
 import React, {Component} from 'react'
 import { withStyles } from '@material-ui/core/styles'
-import {Card, CardHeader, FormControl, Input, InputAdornment, InputLabel, Button, Avatar, AppBar, Toolbar} from '@material-ui/core'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
-import Typography from '@material-ui/core/Typography'
+import {Card, CardHeader, CardContent, FormControl, Input, InputAdornment, InputLabel, Button, Avatar} from '@material-ui/core'
 import {Email, Lock} from '@material-ui/icons'
-import Logo from '../images/pod_logo.png'
+import Logo from '../../images/pod_logo.png'
 
 const styles = {
     card: {
@@ -61,9 +57,6 @@ const styles = {
         fontSize: "1.2em",
         color: '#ffffff',
     },
-    loginToolbar: {
-        background: "linear-gradient(60deg, #667eea, #764ba2)",
-    },
     labelText: {
         fontSize: "1.2em",
         fontWeight: 600,
@@ -93,7 +86,7 @@ class Login extends Component {
                         }
                     />    
                     <CardContent>
-                    <img className={classes.logo} src={Logo} />
+                    <img className={classes.logo} src={Logo} alt="PODVerify" />
                     <FormControl className={classes.margin}>
                         <InputLabel className={classes.labelText} htmlFor="email">Email</InputLabel>
                         <Input
