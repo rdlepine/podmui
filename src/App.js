@@ -13,9 +13,11 @@ library.add(faEnvelope, faTruck, faWrench, faKey, faListOl, faFile)
 
 const styles = {
   mainToolBar: {
-    background: "linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)",
+    //background: "linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)",
+    background: '#ffffff',
   },
   logo: {
+    background: "transparent",
     width: 220,
     height: 60,
     
@@ -25,6 +27,9 @@ const styles = {
     marginRight: 20,
     color: "black",
   },
+  main: {
+    marginTop: 10,
+  }
 }
 
 class App extends Component {
@@ -63,7 +68,7 @@ class App extends Component {
           {this.state.isLoggedIn === false?
               <Login login={this.logIn} />
               :
-              <Main logout={this.logOut} />
+              <Main logout={this.logOut} className={classes.main}/>
             
         }
       </div>
