@@ -15,9 +15,7 @@ const styles = {
         marginTop: 200,
         height: 420,
         width: 420,
-      
-        backgroundColor: 'white'
-      
+        background: "#ffffff",
     },
     login: {
         marginTop: 30,

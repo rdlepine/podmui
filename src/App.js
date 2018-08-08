@@ -29,6 +29,7 @@ const styles = {
   },
   main: {
     marginTop: 10,
+
   }
 }
 
