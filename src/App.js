@@ -7,9 +7,11 @@ import MenuIcon from '@material-ui/icons/Menu'
 import Logo from './images/pod_logo.png'
 import './App.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faEnvelope, faKey, faTruck, faWrench, faListOl, faFile } from '@fortawesome/free-solid-svg-icons'
+import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
+import { faEnvelope, faKey, faTruck, faWrench, faListOl, faFile, faUser, faUsers } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faEnvelope, faTruck, faWrench, faKey, faListOl, faFile)
+library.add(faEnvelope, faTruck, faWrench, faKey, faListOl, faFile, faUser, faUsers)
 
 const styles = {
   mainToolBar: {
@@ -35,29 +37,16 @@ const styles = {
 
 class App extends Component {
 
-  state = {
-    isLoggedIn: false,
-  } 
-
-  logIn = () => {
-    this.setState({isLoggedIn: true})
-  }
-
-  logOut = () => {
-    this.setState({isLoggedIn: false})
-  }
-
-
   render() {
 
     const {classes} = this.props;
-    const {isLoggedIn} = this.state;
+    const {user} = this.props;
 
     return (
         <div className="App">
           <AppBar position="static" className={classes.mainToolBar}>
             <Toolbar>
-            {isLoggedIn && (
+            {user.isLoggedIn && (
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
               <MenuIcon />
             </IconButton>
@@ -66,7 +55,7 @@ class App extends Component {
             </Toolbar>
             </AppBar>
 
-          {this.state.isLoggedIn === false?
+          {user.isLoggedIn === null || user.isLoggedIn === false?
               <Login login={this.logIn} />
               :
               <Main logout={this.logOut} className={classes.main}/>
@@ -77,4 +66,12 @@ class App extends Component {
   }
 }
 
-export default withStyles(styles)(App)
+
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    user: state.user,
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(withStyles(styles)(App)))

@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import {Card, CardHeader, CardContent, FormControl, Input, InputAdornment, InputLabel, Button, Avatar} from '@material-ui/core'
+import {userLogin} from '../../containers/actions';
 import {Email, Lock} from '@material-ui/icons'
 import Logo from '../../images/pod_logo.png'
+import {connect} from 'react-redux'
 
 const styles = {
     card: {
@@ -68,10 +70,13 @@ const styles = {
 
 class Login extends Component {
 
-    render () {
-        const {classes} = this.props
+    logIn = (user) => {
+        this.props.userLogin({user:{isLoggedIn:true}})
+    }
 
-        const {login} = this.props;
+    render () {
+    
+        const {classes} = this.props
 
         return (
             <div>
@@ -106,7 +111,7 @@ class Login extends Component {
                                 </InputAdornment>
                             }
                         />
-                        <Button variant="contained" color="primary" className={classes.login} onClick={login}>LOGIN</Button>
+                        <Button variant="contained" color="primary" className={classes.login} onClick={this.logIn}>LOGIN</Button>
                         <a href="" className={classes.buttonLink}>Reset Password</a>
                      </FormControl>
                     </CardContent>
@@ -117,4 +122,19 @@ class Login extends Component {
 
 }
 
-export default withStyles(styles)(Login)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        userLogin: (user) => dispatch(userLogin(user)),
+      
+    }
+ }
+
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+      user: state.user,
+     
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Login))

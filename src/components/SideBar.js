@@ -98,7 +98,7 @@ class SideBar extends Component {
                          icon="wrench" size="lg"
                      />
                 </ListItemIcon>
-                <ListItemText inset primary="Maintance" disableTypography={true} className={classes.menuText}/>
+                <ListItemText inset primary="Maintenance" disableTypography={true} className={classes.menuText}/>
                 {this.state.configOpen ? <ExpandLess className={classes.menuText}/> : <ExpandMore className={classes.menuText}/>}
                 </ListItem>
                 <Collapse in={this.state.configOpen} timeout="auto" unmountOnExit>
