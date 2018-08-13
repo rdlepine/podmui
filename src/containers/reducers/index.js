@@ -1,19 +1,11 @@
-import * as myActions from '../ActionDescriptions'
+import * as myActions from '../ActionDescriptions.js'
+import {combineReducers} from 'redux'
+import user from './user'
+import drivers from './drivers'
 
-export default function user(state = {isLoggedIn: false}, action) {
-    console.log(action.type)
-    switch (action.type) {
-            case myActions.USER_LOGIN:
-                return {
-                    ...state, user:{...user, isLoggedIn: true}
-                }
-            
-            case myActions.USER_LOGOUT:
-                return {
-                   ...state, user:{isLoggedIn: false}
-                 }
+const rootReducer = combineReducers( {
+    user,
+    drivers,
+})
 
-            default:
-                return {user:{isLoggedIn: false, junk: false}}
-    }
-}    
+export default rootReducer

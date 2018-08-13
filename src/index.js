@@ -5,10 +5,10 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter } from 'react-router-dom'
 import {createStore} from 'redux'
-import user from './containers/reducers'
+import rootReducer from './containers/reducers'
 import {Provider} from 'react-redux'
 
-const store = createStore(user,
+const store = createStore(rootReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 
