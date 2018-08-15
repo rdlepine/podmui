@@ -69,9 +69,11 @@ class SideBar extends Component {
 
         return (
             <Drawer
+                open={false}
                 variant="permanent"
                 classes={{
-                paper: classes.drawerPaper,
+                     paper: classes.drawerPaper,
+                     width: 0,
                 }}
                 >
                 <List className={classes.menu}>

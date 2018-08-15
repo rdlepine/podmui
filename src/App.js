@@ -37,6 +37,16 @@ const styles = {
 
 class App extends Component {
 
+  state = {
+    drawerOpen: true
+  }
+
+  handleMenuClick = () => {
+    this.setState({
+      drawerOpen: !this.state.drawerOpen,
+    })
+  }
+
   render() {
 
     const {classes} = this.props;
@@ -47,7 +57,7 @@ class App extends Component {
           <AppBar position="static" className={classes.mainToolBar}>
             <Toolbar>
             {user.isLoggedIn && (
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" onClick={this.handleMenuClick}>
               <MenuIcon />
             </IconButton>
             )}
@@ -58,7 +68,7 @@ class App extends Component {
           {user.isLoggedIn === null || user.isLoggedIn === false?
               <Login login={this.logIn} />
               :
-              <Main logout={this.logOut} className={classes.main}/>
+              <Main logout={this.logOut} className={classes.main} drawOpen={true}/>
             
         }
       </div>
