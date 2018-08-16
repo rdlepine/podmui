@@ -65,12 +65,12 @@ class SideBar extends Component {
 
     render() {
         
-        const {classes} = this.props
+        const {classes, open, variant} = this.props
 
         return (
             <Drawer
-                open={false}
-                variant="permanent"
+                open={open}
+                variant={variant}
                 classes={{
                      paper: classes.drawerPaper,
                      width: 0,

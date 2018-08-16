@@ -29,11 +29,11 @@ class Main extends Component {
 
     render () {
 
-        const {classes} = this.props
+        const {classes, open, variant} = this.props
 
         return (
             <div className={classes.root}>
-                <SideBar />
+                <SideBar open={open} variant={variant} />
                 <main className={classes.content}>
                     <Content />
                 </main>

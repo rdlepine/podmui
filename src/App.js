@@ -38,12 +38,23 @@ const styles = {
 class App extends Component {
 
   state = {
-    drawerOpen: true
+    drawerOpen: true,
+    variant: 'permanent',
   }
 
   handleMenuClick = () => {
+    let drawerState = ""
+    const {drawerOpen, variant} = this.state
+    
+    if(variant === "permanent") {
+      drawerState = "temporary"
+    } else {
+      drawerState = "permanent"
+    }
+
     this.setState({
       drawerOpen: !this.state.drawerOpen,
+      variant: drawerState,
     })
   }
 
@@ -51,6 +62,7 @@ class App extends Component {
 
     const {classes} = this.props;
     const {user} = this.props;
+    const {drawerOpen, variant} = this.state
 
     return (
         <div className="App">
@@ -68,7 +80,7 @@ class App extends Component {
           {user.isLoggedIn === null || user.isLoggedIn === false?
               <Login login={this.logIn} />
               :
-              <Main logout={this.logOut} className={classes.main} drawOpen={true}/>
+              <Main logout={this.logOut} className={classes.main} open={drawerOpen} variant={variant}/>
             
         }
       </div>
